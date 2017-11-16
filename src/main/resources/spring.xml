@@ -17,15 +17,22 @@ xmlns="http://www.springframework.org/schema/beans"
 	<context:property-placeholder location="classpath:config.properties"/>
 	
 	<!-- 自动扫描(自动注入) -->
-	<context:component-scan base-package="com.me"/>
+	<context:component-scan base-package="com.me">
+		<!-- 排除掉controller的扫描，因为spring-mvc文件中已经扫描了controller -->
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 	
 	<!-- 配置文件引入 -->
 	<import resource="spring-mybatis.xml"/>
+	
+	
 
 	
-	<!-- 采用注释的方式配置bean -->
+	<!-- 采用注解的方式配置bean -->
 	<context:annotation-config />
+	
 	<!-- 该 BeanPostProcessor 将自动起作用，对标注 @Autowired 的 Bean 进行自动注入 -->
-	<bean
-		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	
 </beans>
