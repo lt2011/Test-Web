@@ -43,16 +43,16 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	</bean>
 	
 	<!-- 文件上传配置 -->
-	<!-- 
+	 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver.class">
 		<property name="defaultEncoding">
 			<value>UTF-8</value>
 		</property>
 		<property name="maxUploadSize">
-			<value>32505856</value>文件上传最大31M 31*1024*2014
+			<value>32505856</value> <!-- 文件上传最大31M 31*1024*1024 -->
 		</property>
 		<property name="maxInMemorySize">
 			<value>4096</value>
 		</property>
-	</bean> -->
+	</bean> 
 </beans>
